@@ -1,5 +1,7 @@
 package pfaff.plot
 
+import scala.util.Random
+
 import org.apache.commons.math3.random.EmpiricalDistribution
 import org.apache.commons.math3.stat.StatUtils
 import org.jcolorbrewer.ColorBrewer
@@ -34,7 +36,7 @@ object DoPlot {
     val colorBy = args(1).toInt
     val numeric = args(2).toBoolean
     val palette = if (numeric) {
-      ColorBrewer.getSequentialColorPalettes(false)(17).getColorPalette(20)
+      ColorBrewer.getSequentialColorPalettes(false)(10).getColorPalette(20)
     } else {
       ColorBrewer.getQualitativeColorPalettes(false)(5).getColorPalette(data.map(_(3)).distinct.size)
     }
@@ -92,6 +94,20 @@ object DoPlot {
       }).toArray
       coloredData
     }
+    (new Thread{
+      override def run() {
+        while (true) {
+          for (i <- (0 until coloredData.size)) {
+            val item = coloredData(i)
+            item(0) = item(0) + (Random.nextFloat() - .5f) / 10f
+            item(1) = item(1) + (Random.nextFloat() - .5f) / 10f
+            item(2) = item(2) + (Random.nextFloat() - .5f) / 10f
+            coloredData(i) = item
+          }
+        }
+      }
+    }).start()
+
     PlotGL.createPlot(coloredData)
   }
 }

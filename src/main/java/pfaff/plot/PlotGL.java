@@ -181,7 +181,7 @@ public class PlotGL {
                 // TODO Auto-generated method stub
                 width = jframe.getSize().getWidth();
                 height = jframe.getSize().getHeight();
-                baseBallCard.setLocation(0, (int) height - 125);
+                baseBallCard.setLocation(0, (int) height);
                 gearbutton.setLocation((int) width - 79, (int) height - 99);
                 settingspanel.setSize(new Dimension((int) (.6 * width), (int) (.6 * height)));
                 settingspanel.setLocation((int) (.2 * width), (int) (.15 * height));
@@ -235,7 +235,7 @@ public class PlotGL {
         });
         gearbutton.setSize(64, 64);
         gearbutton.setIcon(new ImageIcon("Gear-64.png"));
-        baseBallCard.setSize(100, 100);
+        baseBallCard.setSize(64, 64);
         gearbutton.setBackground(new Color(.8f, .8f, 1f, .75f));
         glcanvas.setLayout(null);
         menu = new TranslucentPopupMenu();
@@ -248,11 +248,11 @@ public class PlotGL {
         menu.setBorderPainted(false);
         menu.setOpaque(true);
         menu.setBorder(BorderFactory.createEmptyBorder());
-        itemPicker.setBackground(new Color(0, 0, 0));
         baseBallCard.setLayout(null);
-        itemPicker.setLocation(10, 10);
+        itemPicker.setLocation(0, 0);
         itemPicker.setSize(64, 64);
         baseBallCard.add(itemPicker);
+        itemPicker.setIcon(new ImageIcon("eye.png"));
         JLabel clabel = new JLabel("Color");
 
 
