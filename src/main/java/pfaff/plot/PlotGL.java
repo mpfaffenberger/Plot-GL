@@ -46,14 +46,11 @@ public class PlotGL {
     public static double viewAngle = 180;
     public static double width = 900;
     public static double height = 600;
-    public static boolean pointsMode = true;
+    public static boolean pointsMode = false;
     public static JSlider bgColor;
 
     public static JButton gearbutton;
     public static JButton itemPicker;
-    public static JLabel red = new JLabel("R:");
-    public static JLabel green = new JLabel("G: ");
-    public static JLabel blue = new JLabel("B: ");
 
     public static TranslucentPopupMenu menu;
     public static JMenuItem settings = new JMenuItem("Settings");
@@ -67,7 +64,6 @@ public class PlotGL {
     static JCheckBox points = new JCheckBox("Points");
 
     static JCheckBox showall = new JCheckBox("Display Entire Model");
-    static JPanel slidePanel = new JPanel();
     static JCheckBox wireframe = new JCheckBox("Wireframe");
     static JLabel aboutpanel = new JLabel();
     static JSlider sphereSize = new JSlider();
@@ -257,9 +253,6 @@ public class PlotGL {
         itemPicker.setLocation(10, 10);
         itemPicker.setSize(64, 64);
         baseBallCard.add(itemPicker);
-        baseBallCard.add(red);
-        baseBallCard.add(green);
-        baseBallCard.add(blue);
         JLabel clabel = new JLabel("Color");
 
 
