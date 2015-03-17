@@ -57,7 +57,7 @@ public class Controller implements GLEventListener, KeyListener, MouseWheelListe
 
     @Override
     public void display(GLAutoDrawable glautodrawable) {
-        ot.render(glautodrawable.getGL().getGL2(), glautodrawable.getWidth(), glautodrawable.getHeight(), rotationx, rotationy, rotationz, notches, ty, tz);
+        ot.render(glautodrawable.getGL().getGL2(), glautodrawable.getSurfaceWidth(), glautodrawable.getSurfaceHeight(), rotationx, rotationy, rotationz, notches, ty, tz);
     }
 
     @Override
@@ -134,7 +134,6 @@ public class Controller implements GLEventListener, KeyListener, MouseWheelListe
     @Override
     public void mouseExited(java.awt.event.MouseEvent e) {
         // TODO Auto-generated method stub
-
     }
 
     @Override

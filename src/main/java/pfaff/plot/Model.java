@@ -1,6 +1,6 @@
 package pfaff.plot;
 
-import java.awt.Font;
+import java.awt.*;
 import java.nio.FloatBuffer;
 import java.util.Random;
 import javax.media.opengl.GL;
@@ -201,6 +201,13 @@ public class Model {
                     index = i;
                 }
             }
+            int storyIndex = Math.round(table[index][6]);
+            System.out.println(PlotGL.sArray[storyIndex]);
+            PlotGL.story.setText(PlotGL.sArray[storyIndex]);
+            PlotGL.story.setMaximumSize(new Dimension(PlotGL.storyPanel.getWidth(), PlotGL.storyPanel.getHeight()));
+            PlotGL.storyPanel.setVisible(true);
+            PlotGL.story.setLineWrap(true);
+
             selection = index;
         }
         gl2.glPopMatrix();

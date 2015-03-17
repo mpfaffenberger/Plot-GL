@@ -32,11 +32,11 @@ object DoPlot {
   }
 
   def main(args: Array[String]) = {
-    val data = scala.io.Source.fromFile(args(0)).getLines.map(_.split(",")).toList.drop(1)
+    val data = scala.io.Source.fromFile(args(0)).getLines.map(_.split(args(3))).toList.drop(1)
     val colorBy = args(1).toInt
     val numeric = args(2).toBoolean
     val palette = if (numeric) {
-      ColorBrewer.getSequentialColorPalettes(false)(10).getColorPalette(20)
+      ColorBrewer.getSequentialColorPalettes(false)(8).getColorPalette(20)
     } else {
       ColorBrewer.getQualitativeColorPalettes(false)(5).getColorPalette(data.map(_(3)).distinct.size)
     }
@@ -94,7 +94,7 @@ object DoPlot {
       }).toArray
       coloredData
     }
-    (new Thread{
+    /*(new Thread{
       override def run() {
         while (true) {
           for (i <- (0 until coloredData.size)) {
@@ -106,8 +106,12 @@ object DoPlot {
           }
         }
       }
-    }).start()
+    }).start()*/
 
-    PlotGL.createPlot(coloredData)
+    val points = coloredData.zipWithIndex.map(item => {
+      Array(item._1(0), item._1(1), item._1(2), item._1(3), item._1(4), item._1(5), item._2.toFloat)
+    })
+    val stories = data.map(_(4)).toArray
+    PlotGL.createPlot(points, stories)
   }
 }
