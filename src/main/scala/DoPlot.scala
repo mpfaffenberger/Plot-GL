@@ -109,9 +109,12 @@ object DoPlot {
     }).start()*/
 
     val points = coloredData.zipWithIndex.map(item => {
-      Array(item._1(0), item._1(1), item._1(2), item._1(3), item._1(4), item._1(5), item._2.toFloat)
+      Array(item._1(0), item._1(1), item._1(2))
+    })
+    val colors = coloredData.zipWithIndex.map(item => {
+      Array(item._1(3), item._1(4), item._1(5), item._2.toFloat)
     })
     val stories = data.map(_(4)).toArray
-    PlotGL.createPlot(points, stories)
+    PlotGL.createPlot(points,colors, stories)
   }
 }

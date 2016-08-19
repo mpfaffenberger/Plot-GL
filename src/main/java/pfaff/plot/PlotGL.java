@@ -71,7 +71,7 @@ public class PlotGL {
         GLProfile.initSingleton();
     }
 
-    public static void createPlot(float[][] table, String[] storiesArray) {
+    public static void createPlot(float[][] table, float[][] colors, String[] storiesArray) {
         int ssx = (int) (.6 * width);
         int ssy = (int) (.6 * height);
         sArray = storiesArray;
@@ -81,7 +81,7 @@ public class PlotGL {
         GLProfile glprofile = GLProfile.getDefault();
         GLCapabilities glcapabilities = new GLCapabilities(glprofile);
         glcanvas = new GLJPanel();
-        final Controller cc = new Controller(table);
+        final Controller cc = new Controller(table, colors);
         final JPanel baseBallCard = new JPanel();
         model = cc.ot;
         glcanvas.addMouseListener(cc);

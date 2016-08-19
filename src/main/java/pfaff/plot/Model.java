@@ -14,6 +14,7 @@ import com.jogamp.opengl.util.gl2.GLUT;
 public class Model {
     private int gludrawtype = GLU.GLU_FILL;
     private float[][] table;
+    private float[][] colors;
     private boolean debug = false;
     private boolean points = false;
     private boolean redrawcanvas = false;
@@ -35,8 +36,9 @@ public class Model {
         }
     }
 
-    public Model(float[][] table) {
+    public Model(float[][] table, float[][] colors) {
         this.table = table;
+        this.colors = colors;
     }
 
     protected void resize(GL2 gl2) {
@@ -195,9 +197,9 @@ public class Model {
                 double euclidean = euclideanDistance3(wcoords[0], wcoords[1], wcoords[2], table[i][0], table[i][1], table[i][2]);
                 if (distance > euclidean) {
                     distance = euclidean;
-                    rgb[0] = table[i][3];
-                    rgb[1] = table[i][4];
-                    rgb[2] = table[i][5];
+                    rgb[0] = colors[i][0];
+                    rgb[1] = colors[i][1];
+                    rgb[2] = colors[i][2];
                     index = i;
                 }
             }
@@ -215,11 +217,11 @@ public class Model {
 
     protected void drawModel(GL2 gl2, GLU glu, int i, GLUquadric gq) {
         gl2.glPushMatrix();
-        gl2.glColor3f((float) table[i][3], (float) table[i][4], (float) table[i][5]);
-        gl2.glTranslatef((float) (((float) table[i][0] / 100) - .5), (float) table[i][1] / 100, (float) table[i][2] / 100);
+        gl2.glColor3f((float) colors[i][0], (float) colors[i][1], (float) colors[i][2]);
+        gl2.glTranslatef((float) (((float) table[i][0] / 10)), (float) table[i][1] / 10, (float) table[i][2] / 10);
         gl2.glScalef((float) PlotGL.sphereSize.getValue() / 10, (float) PlotGL.sphereSize.getValue() / 10, (float) PlotGL.sphereSize.getValue() / 10);
         if (PlotGL.pointsMode) {
-            gl2.glVertex3f((table[i][0] / 100) - .5f, table[i][1] / 100, table[i][2] / 100);
+            gl2.glVertex3f((table[i][0] / 10), table[i][1] / 10, table[i][2] / 10);
         } else {
             gl2.glCallList(1);
         }

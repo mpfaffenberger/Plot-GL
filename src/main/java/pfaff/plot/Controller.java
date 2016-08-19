@@ -33,8 +33,8 @@ public class Controller implements GLEventListener, KeyListener, MouseWheelListe
         ot = new Model(10000000);
     }
 
-    public Controller(float[][] table) {
-        ot = new Model(table);
+    public Controller(float[][] table, float[][] colors) {
+        ot = new Model(table, colors);
     }
 
     public Controller(Model oneT) {
